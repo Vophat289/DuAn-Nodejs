@@ -15,12 +15,15 @@
     "express",
     "mongodb"
   ],
-  "author":{
+  "author": {
     "name": "Paul Võ"
-    } ,
+  },
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Vophat289/DuAn-Nodejs/issues"
   },
-  "homepage": "https://github.com/Vophat289/DuAn-Nodejs#readme"
+  "homepage": "https://github.com/Vophat289/DuAn-Nodejs#readme",
+  "dependencies": {
+    "express": "5.0.1"
+  }
 }
