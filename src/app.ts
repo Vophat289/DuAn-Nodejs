@@ -1,22 +1,23 @@
 // const express = require ('express');
 import express from 'express';
-import 'dotenv/config'
+import 'dotenv/config';
+import webRoutes from './routes/web';
 
 const app = express ();
 const PORT = process.env.PORT || 8080;
 
+//config view engine
+app.set('view engine', 'ejs');
+app.set('views', __dirname + '/views');
 
-app.get("/", (req, res) => {
-    res.send("Hello World!  ") 
-})
+//config routes
+webRoutes(app);
 
-app.get("/subin", (req, res) => {
-    res.send("Hello Bin!") 
-})
 
+//config static file: images/css/js
+app.use(express.static('public'))
 
 app.listen(PORT, () => {
     console.log(`Server đang chạy trên port: ${PORT}`)
-    console.log('env port: ', process.env.PORT);
-    
-})
+
+});
