@@ -5,12 +5,9 @@ import { handleCreateUser, getAllUssers } from "../services/user.service";
 const getHomePage = async (req: Request, res: Response) => {
     //get users
     const users = await getAllUssers();
-    console.log("Check users: ", users);
-    
+
      return res.render("home", {
-        name: users, //lấy giá trị tay phải gán tay trái x <- y
-        email: users,
-        address: users
+        users: users, //lấy giá trị tay phải gán tay trái x <- y
      })
 }
 

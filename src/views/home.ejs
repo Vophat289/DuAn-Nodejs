@@ -27,15 +27,19 @@
               <th>Hành động</th>
             </tr>
             <tbody>
-                <tr>
-                <td></td>
-                <td><%= JSON.stringify(name) %></td>
-                <td><%= JSON.stringify(email) %></td>
-                <td><%= JSON.stringify(address) %></td>
-                <td>
-                    <button class="btn btn-danger">Xóa</button>
-                </td>
-                </tr>
+                <% users.forEach( function (user) { %>
+                  
+                    <tr>
+                        <td><%= user.id %></td>
+                        <td><%= user.name %></td>
+                        <td><%= user.email %></td>
+                        <td><%= user.address %></td>
+                        <td>
+                            <button class="btn btn-danger">Xóa</button>
+                        </td>
+                     </tr>
+                <% }) %>
+              
             </tbody>
            
         
