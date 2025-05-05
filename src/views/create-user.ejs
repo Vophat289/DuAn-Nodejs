@@ -13,23 +13,23 @@
 
     <h1 style="padding: 10px 0;">Create a user</h1>
     
-
+<form action="/handle-create-user" method="POST">
     <div class="mb-3">
         <label class="form-label">Họ và tên</label>
-        <input type="text" class="form-control" placeholder="Nhập vào đây ">
+        <input name = "fullName" type="text" class="form-control" placeholder="Nhập vào đây ">
       </div>
       <div class="mb-3">
         <label class="form-label">Email</label>
-        <input type="email" class="form-control" placeholder="Nhập vào đây ">
+        <input name = "email" type="email" class="form-control" placeholder="Nhập vào đây ">
       </div>
       <div class="mb-3">
         <label class="form-label">Địa chỉ</label>
-        <textarea class="form-control" rows="2"></textarea>
+        <textarea name = "address" class="form-control" rows="2"></textarea>
       </div>
       <div class="mb-3">
-        <button class="btn btn-warning">Submit</button>
+        <button type="submit" class="btn btn-warning">Submit</button>
       </div>
-
+    </form>
     </div>
 </body>
 </html>
