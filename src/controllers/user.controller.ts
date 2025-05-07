@@ -16,7 +16,7 @@ const getCreateUserPage = (req: Request, res: Response) => {
     return res.render("create-user")
 }
 
-const postCreateUserPage = async (req: Request, res: Response) => {
+const postCreateUser = async (req: Request, res: Response) => {
    //object destructuring
     const {fullName, email, address} = req.body;
     
@@ -26,5 +26,12 @@ const postCreateUserPage = async (req: Request, res: Response) => {
     return res.redirect("/")
 }
 
+const postDeleteUser = async (req: Request, res: Response) => {
 
-export {getHomePage, getCreateUserPage, postCreateUserPage}
+    const { id } = req.params;
+    
+     return res.redirect("/")
+ }
+
+
+export {getHomePage, getCreateUserPage, postCreateUser, postDeleteUser}
