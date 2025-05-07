@@ -1,5 +1,5 @@
 import express, {Express} from 'express';
-import { getHomePage, getCreateUserPage, postCreateUserPage } from '../controllers/user.controller';
+import { getHomePage, getCreateUserPage, postCreateUserPage } from 'controllers/user.controller';
 
 
 
