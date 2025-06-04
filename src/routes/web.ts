@@ -1,6 +1,6 @@
 import express, {Express} from 'express';
 import { getHomePage, getCreateUserPage, postCreateUser, postDeleteUser, getViewUser, postUpdateUser} from 'controllers/user.controller';
-import { getDashboardPage } from 'controllers/admin/dashboard.controller';
+import { getDashboardPage, getAdminUserPage, getAdminProductPage, getAdminOrderPage } from 'controllers/admin/dashboard.controller';
 
 
 
@@ -16,7 +16,10 @@ const webRoutes = (app: Express) =>{
     router.post("/handle-delete-user/:id", postDeleteUser);
 
     //admin
-    router.get("/admin", getDashboardPage)
+    router.get("/admin", getDashboardPage);
+    router.get("/admin/user", getAdminUserPage);
+    router.get("/admin/product", getAdminProductPage);
+    router.get("/admin/order", getAdminOrderPage);
 
     app.use("/", router);
 }
