@@ -3,6 +3,8 @@ import { getHomePage, getCreateUserPage, postCreateUser, postDeleteUser, getView
 import { getDashboardPage, getAdminUserPage, getAdminProductPage, getAdminOrderPage } from 'controllers/admin/dashboard.controller';
 
 
+const multer = require('multer');
+const upload = multer({dest: 'upload/' })
 
 const router = express.Router();
 const webRoutes = (app: Express) =>{
@@ -22,9 +24,12 @@ const webRoutes = (app: Express) =>{
     router.get("/admin/order", getAdminOrderPage);
 
     router.get("/admin/create-user", getCreateUserPage);
-    router.post("/admin/handle-create-user", postCreateUser);
-     
-    
+    // router.post("/admin/handle-create-user", postCreateUser);
+    router.post("/admin/handle-create-user", upload.single('avatar'), (req, res) => {
+        res.send("ok")
+    });
+
+ 
     
     
 
