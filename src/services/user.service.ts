@@ -28,6 +28,11 @@ const getAllUsers = async () => {
     return users;
 }
 
+const getAllRoles = async () => {
+   const roles = await prisma.role.findMany()
+    return roles;
+}
+
 const getUserById = async (id: string) => {    
   const user = await prisma.user.findUnique({where: {id: +id}})
   return user;
@@ -56,4 +61,6 @@ const handleDeleteUser = async (id: string) => {
 }
 
 
-    export {handleCreateUser, getAllUsers,getUserById ,handleDeleteUser, UpdateUserById }
+    export {handleCreateUser, getAllUsers,getUserById ,handleDeleteUser, UpdateUserById,
+      getAllRoles
+     }

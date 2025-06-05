@@ -25,7 +25,53 @@
                     <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
                     <li class="breadcrumb-item active">Users</li>
                 </ol>
-                <div>table user</div>
+                <div>
+                     <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h4>Danh sách User: </h4>
+                    <div>
+                    
+                    </div>
+                    <a href="/admin/create-user" class="btn btn-primary">Create User</a>
+                </div>
+                <hr>
+                    <table class="table table-hover table-bordered">
+            <tr>
+              <th>ID</th>
+              <th>Tên</th>
+              <th>Email</th>
+              <th>Địa chỉ</th>
+              <th>Hành động</th>
+            </tr>
+            <tbody>
+                <% users.forEach( function (user) { %>
+                  
+                    <tr>
+                        <td><%= user.id %></td>
+                        <td><%= user.fullname %></td>
+                        <td><%= user.username %></td>
+                        <td><%= user.address %></td>
+                        <td>
+                            
+                        <div style="display: flex; gap: 10px;">
+                            <form action="/handle-view-user/<%= user.id %>" method="GET" >
+                                <button type="submit" class="btn btn-warning">Xem</button>
+                            </form>
+
+                            <form action="/handle-delete-user/<%= user.id %>" method="POST" >
+                                <button type="submit" class="btn btn-danger">Xóa</button>
+                            </form>
+                        </div>
+                            
+                           
+                        </td>
+                     </tr>
+                <% }) %>
+              
+            </tbody>
+           
+        
+          </table>
+                </div>
             </div>
            </main>
            <%- include('../layout/footer'); -%>
