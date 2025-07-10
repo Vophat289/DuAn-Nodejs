@@ -1,23 +1,30 @@
-import getConnection from "config/database";
-import { PrismaClient } from "@prisma/client"; 
-import { prisma } from "config/client";
-import { name } from "ejs";
 
+import { prisma } from "config/client";
+import { ACCOUNT_TYPE } from "config/constan";
+import bcrypt from 'bcrypt';
+const saltRounds = 10;
+
+const hashPass = async (plainText: string) => {
+  return await bcrypt.hash(plainText, saltRounds) 
+}
 const handleCreateUser = async (
     fullName: string,
     email: string,
-    address: string) => {
+    address: string,
+    avatar: string,
+    phone: string
+  ) => {
+        const defaultpass = await hashPass("123456")
 
-        //insert into database
-       
-        
         const newUser = await prisma.user.create({
           data: {
             fullName: fullName,
             username: email,
             address: address,
-            password: "",
-            accountType: ""
+            password: defaultpass,
+            accountType: ACCOUNT_TYPE.SYSTEM,
+            avatar: avatar,
+            phone: phone
           }
         })
         return newUser;
@@ -62,5 +69,5 @@ const handleDeleteUser = async (id: string) => {
 
 
     export {handleCreateUser, getAllUsers,getUserById ,handleDeleteUser, UpdateUserById,
-      getAllRoles
+      getAllRoles, hashPass
      }

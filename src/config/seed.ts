@@ -1,22 +1,28 @@
 import { prisma } from "config/client";
 import { loadavg } from "node:os";
+import { ACCOUNT_TYPE } from "config/constan";
+import { hashPass } from "services/user.service";
+
 
 const initDatabase = async () => {
     const countUser = await prisma.user.count();
     const countRole = await prisma.role.count();
+    const defaultpass = await hashPass ("123456"); 
 
     if (countUser === 0) {
         await prisma.user.createMany({
         data: [
             {
+                fullName: "Admin",
                 username: "vohongphat@gmail.com",
-                password: "123",
-                accountType: "SYSTEM"
+                password: defaultpass,
+                accountType: ACCOUNT_TYPE.SYSTEM
             },
             {
+                fullName: "Subin",
                 username: "subin@gmail.com",
-                password: "1234",
-                accountType: "SYSTEM"
+                password: defaultpass,
+                accountType: ACCOUNT_TYPE.SYSTEM
             } 
         ]
     })
